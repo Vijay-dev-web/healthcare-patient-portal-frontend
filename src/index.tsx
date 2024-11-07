@@ -19,7 +19,7 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppointmentDetails />,
+    element: <Layout />,
     children: [
       {
         path: "",
@@ -35,11 +35,12 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
+        element: <Dashboard/>,
         children: [
           {
-            index: true,
-            element: <Dashboard />,
-          },
+            path: 'appointments',
+            element: <AppointmentDetails />
+          }
         ]
       }
     ],
