@@ -10,6 +10,7 @@ import { Dashboard } from "./pages/Dashboard";
 import { AppointmentDetails } from "./pages/AppointmentDetails";
 import { store } from './store/store';
 import { Provider } from 'react-redux';
+import { Appointment } from "./pages/Appointment";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
           {
             path: 'appointments',
             element: <AppointmentDetails />
+          },
+          {
+            path: 'book',
+            element: <Appointment/>
           }
         ]
       }
