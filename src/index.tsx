@@ -6,8 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
-import { Login } from "./components/Login";
-import { Signin } from "./components/Signin";
+import { Login } from "./pages/Login";
+import { Signin } from "./pages/Signin";
+import { Dashboard } from "./pages/Dashboard";
+import { Appointment } from "./pages/Appointment";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -16,7 +18,7 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <Appointment />,
     children: [
       {
         path: "home",
@@ -31,6 +33,19 @@ const router = createBrowserRouter([
   {
     path: "signin",
     element: <Signin />
+  },
+  {
+    path: "dashboard",
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+      {
+        index: true,
+        element: <Dashboard />,
+      }
+    ]
   }
 ]);
 
