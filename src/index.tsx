@@ -6,6 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
+import { Login } from "./components/Login";
+import { Signin } from "./components/Signin";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "login",
+    element: <Login />
+  },
+  {
+    path: "signin",
+    element: <Signin />
+  }
 ]);
 
 root.render(<RouterProvider router={router} />);

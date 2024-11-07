@@ -1,6 +1,6 @@
 import React from 'react'
  
-export const LoginComponent: React.FC = () => {
+export const Login: React.FC = () => {
   return (
     <div style={{ display: "grid", alignItems: "center", justifyContent:"center", height: "100%"}}>
         <img style={{ width: "150px", height: "150px"}}></img>
