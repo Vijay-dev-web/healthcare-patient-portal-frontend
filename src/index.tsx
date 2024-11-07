@@ -10,6 +10,7 @@ import { Login } from "./pages/Login";
 import { Signin } from "./pages/Signin";
 import { Dashboard } from "./pages/Dashboard";
 import { Appointment } from "./pages/Appointment";
+import { AppointmentDetails } from "./pages/AppointmentDetails";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -18,7 +19,7 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <AppointmentDetails />,
     children: [
       {
         path: "",
