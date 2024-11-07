@@ -2,16 +2,19 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateUserDetails } from "../store/overAllSlice";
 
 export const Signin: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm({
     defaultValues: {
       name: "",
       email: "",
       password: "",
       contact: "",
-      role: 1,
+      role: true,
     },
   });
 
@@ -23,11 +26,16 @@ export const Signin: React.FC = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      data: data,
+      data: {
+        ...data,
+        role: data?.role ? 1 : 2
+      },
     };
     axios
       .request(config)
       .then((response) => {
+        localStorage.setItem("tokenDetails", response.data.token);
+        dispatch(updateUserDetails(response.data))
         navigate("/dashboard")
       })
       .catch((error) => {

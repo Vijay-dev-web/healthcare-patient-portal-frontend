@@ -1,13 +1,17 @@
 import axios from "axios";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateAppointmentdetails } from "../store/overAllSlice";
+// import AppointmentDetails from "../store/overAllSlice"
 
 export const AppointmentDetails: React.FC = () => {
   const dispatch = useDispatch();
+  const userDetail = useSelector((store:any) => store.overall.userDetails);
+  const appointmentDetails = useSelector((store: any) => store.overall.appointmentDetails);
+  console.log(userDetail);
   useEffect(() => {
     axios
-      .get("http://10.137.199.32:3003/api/appoinments/1/3")
+      .get(`http://10.137.199.32:3003/api/appoinments/doctor/${userDetail.id ? userDetail?.id : 3}`)
       .then((res) => dispatch(updateAppointmentdetails(res.data)));
   }, []);
 
@@ -25,16 +29,12 @@ export const AppointmentDetails: React.FC = () => {
             </tr>
           </thead>
           <tbody>
+          {(appointmentDetails ?? []).map((item: any) => (
             <tr>
-              <td>9:00AM</td>
-              <td>John Doe</td>
-              <td>Annual check-up</td>
-            </tr>
-            <tr>
-              <td>10:30AM</td>
-              <td>John Smith</td>
-              <td>Follow up</td>
-            </tr>
+              <td>{item.appointmentTime}</td>
+              <td>{item.doctor_id}</td>
+              <td>{item.reason}</td>
+            </tr>))}
           </tbody>
         </table>
       </div>
@@ -49,16 +49,12 @@ export const AppointmentDetails: React.FC = () => {
             </tr>
           </thead>
           <tbody>
+          {(appointmentDetails ?? []).map((item: any) => (
             <tr>
-              <td>9:00AM</td>
-              <td>John Doe</td>
-              <td>Annual check-up</td>
-            </tr>
-            <tr>
-              <td>10:30AM</td>
-              <td>John Smith</td>
-              <td>Follow up</td>
-            </tr>
+              <td>{item.appointmentTime}</td>
+              <td>{item.doctor_id}</td>
+              <td>{item.reason}</td>
+            </tr>))}
           </tbody>
         </table>
       </div>

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface AppointmentState {
-  appointmentDetails: Array<String>,
+  appointmentDetails: Array<AppointmentDetails>,
   userDetails: {
     contact: string,
     email: string,
@@ -13,7 +13,17 @@ export interface AppointmentState {
   }
 }
 
-const initialState: AppointmentState = {
+export interface AppointmentDetails {
+  user_id: string,
+  doctor_id: string,
+  appointmentDate: Date,
+  appointmentTime: string,
+  reason: string,
+  notes: string,
+  active_status: string
+}
+
+export const initialState: AppointmentState = {
   appointmentDetails: [],
   userDetails: {
     contact: "",
