@@ -1,4 +1,5 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 export const Dashboard:React.FC = () => {
   return (
@@ -11,6 +12,7 @@ export const Dashboard:React.FC = () => {
             <nav>Messages</nav>
             <nav>Logout</nav>
         </div>
+        <Outlet/>
     </div>
   )
 }

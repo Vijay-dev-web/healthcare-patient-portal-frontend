@@ -18,35 +18,34 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Appointment />,
+    element: <Layout />,
     children: [
       {
-        path: "home",
+        path: "",
         element: <Home/>,
       },
-    ],
-  },
-  {
-    path: "login",
-    element: <Login />
-  },
-  {
-    path: "signin",
-    element: <Signin />
-  },
-  {
-    path: "dashboard",
-    children: [
       {
-        index: true,
-        element: <Dashboard />,
+        path: "login",
+        element: <Login />
       },
       {
-        index: true,
-        element: <Dashboard />,
+        path: "signin",
+        element: <Signin />
+      },
+      {
+        path: "dashboard",
+        children: [
+          {
+            index: true,
+            element: <Dashboard />,
+          },
+        ]
       }
-    ]
-  }
+    ],
+  },
+
+
+
 ]);
 
 root.render(<RouterProvider router={router} />);
