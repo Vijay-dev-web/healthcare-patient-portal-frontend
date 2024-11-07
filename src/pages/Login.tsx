@@ -52,7 +52,7 @@ export const Login: React.FC = () => {
           />
         </div>
         <form onSubmit={handleSubmit(onSubmit, onError)}>
-          <h4 className="text-blue-600 text-2xl font-bold mb-4">Login</h4>
+          <h4 className="text-blue-600 text-2xl font-bold mb-4">Log In</h4>
           <div className="pb-2">
             <input
               className="border w-64"
