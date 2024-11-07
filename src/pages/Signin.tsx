@@ -36,7 +36,7 @@ export const Signin: React.FC = () => {
       .then((response) => {
         localStorage.setItem("tokenDetails", response.data.token);
         dispatch(updateUserDetails(response.data))
-        navigate("/dashboard")
+        navigate("/dashboard/appointments")
       })
       .catch((error) => {
         console.log(error);

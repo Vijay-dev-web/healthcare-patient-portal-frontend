@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 export const Dashboard: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ export const Dashboard: React.FC = () => {
         <ul className="text-sm">
           <NavLink to="/dashboard/appointments" className={({isActive}) => isActive ? 'underline text-white' : 'text-white'}>Dashboard</NavLink> <br/>
           <NavLink to="/dashboard/book" className={({isActive}) => isActive ? 'underline text-white' : 'text-white'}>Book an Appointment</NavLink>
-          <li>Logout</li>
+          <li><Link to="/" className="text-white">Logout</Link></li>
         </ul>
       </div>
       <Outlet />
