@@ -8,9 +8,11 @@ import { Login } from "./pages/Login";
 import { Signin } from "./pages/Signin";
 import { Dashboard } from "./pages/Dashboard";
 import { AppointmentDetails } from "./pages/AppointmentDetails";
-import { store } from './store/store';
-import { Provider } from 'react-redux';
+import { store } from "./store/store";
+import { Provider } from "react-redux";
 import { Appointment } from "./pages/Appointment";
+import HealthTopics from "./pages/HealthTopics";
+import HealthCareHome from "./pages/HealthCareHome";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -22,39 +24,50 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "",
-        element: <Home/>,
+        path: "home",
+        element: <Home />,
+        children: [
+          {
+            path: "",
+            element: <HealthCareHome/>,
+          },
+          {
+            path: "health-topics",
+            element: <HealthTopics />,
+          },
+        ],
       },
       {
         path: "login",
-        element: <Login />
+        element: <Login />,
       },
       {
         path: "signin",
-        element: <Signin />
+        element: <Signin />,
       },
       {
         path: "dashboard",
-        element: <Dashboard/>,
+        element: <Dashboard />,
         children: [
           {
-            path: 'appointments',
-            element: <AppointmentDetails />
+            path: "appointments",
+            element: <AppointmentDetails />,
           },
           {
-            path: 'book',
-            element: <Appointment/>
-          }
-        ]
-      }
+            path: "book",
+            element: <Appointment />,
+          },
+        ],
+      },
     ],
   },
-
-
-
 ]);
 
-root.render(<Provider store={store}><RouterProvider router={router} /></Provider>);
+root.render(
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
