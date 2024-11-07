@@ -6,8 +6,8 @@ export const Signin: React.FC = () => {
     name: "",
     email: "",
     password: "",
-    mobile: "",
-    type: 0
+    contact: "",
+    role: 1
   }})
 
   const onSubmit = (data: any) => {
@@ -25,8 +25,12 @@ export const Signin: React.FC = () => {
         <input id='name' type='text' placeholder='Name' {...register("name", { required: true })}/>
         <input id='email' type='email' placeholder='Email' {...register("email", { required: true })}/>
         <input id='password' type='password' placeholder='Password' {...register("password", { required: true })}/>
-        <input id='contact' type='number' placeholder='Phone Number' {...register("mobile", { required: true })}/>
-        <input id='type' type='checkbox' aria-label='Doctor' {...register("type", { required: true })}/>
+        <input id='contact' type='text' placeholder='Phone Number' {...register("contact", { required: true })}/>
+        <select>
+          <option>Doctor</option>
+          <option>Patient</option>
+        </select>
+        <input id='type' type='checkbox' aria-label='Doctor' {...register("role", { required: true })}/>
         <button type='submit'>Sign In</button>
         </form>
     </div>
