@@ -2,8 +2,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { updateUserDetails } from "../store/overAllSlice";
 
 export const Login: React.FC = () => {
+  const dispatch = useDispatch();
+
   const { register, handleSubmit } = useForm({
     defaultValues: {
       email: "",
@@ -25,6 +29,8 @@ export const Login: React.FC = () => {
     axios
       .request(config)
       .then((response) => {
+        localStorage.setItem("tokenDetails", response.data.token);
+        dispatch(updateUserDetails(response.data))
         navigate("/dashboard")
       })
       .catch((error) => {
