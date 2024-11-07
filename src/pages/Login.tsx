@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const Login: React.FC = () => {
   const { register, handleSubmit } = useForm({
@@ -10,7 +11,26 @@ export const Login: React.FC = () => {
     },
   });
 
-  const onSubmit = (data: any) => {};
+  
+  const onSubmit = (data: any) => {
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://10.137.199.32:4000/login",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+    axios
+      .request(config)
+      .then((response) => {
+        navigate("/dashboard")
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const onError = (data: any) => {};
 
